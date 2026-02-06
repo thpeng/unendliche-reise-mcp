@@ -2,6 +2,8 @@ package ch.thp.proto.unendlichereise.locationinfo;
 
 import ch.thp.proto.unendlichereise.locationinfo.model.LocationRequest;
 import ch.thp.proto.unendlichereise.locationinfo.model.LocationResult;
+import ch.thp.proto.unendlichereise.shared.ojp.OjpClient;
+import ch.thp.proto.unendlichereise.shared.sanitizer.InputSanitizer;
 import okhttp3.mockwebserver.MockResponse;
 import okhttp3.mockwebserver.MockWebServer;
 import okhttp3.mockwebserver.RecordedRequest;
@@ -32,7 +34,9 @@ class LocationInfoServiceTest {
                 .defaultHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_XML_VALUE)
                 .build();
 
-        service = new LocationInfoService(webClient);
+        OjpClient ojpClient = new OjpClient(webClient);
+        InputSanitizer inputSanitizer = new InputSanitizer();
+        service = new LocationInfoService(ojpClient, inputSanitizer);
     }
 
     @AfterEach

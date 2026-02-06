@@ -1,4 +1,4 @@
-package ch.thp.proto.unendlichereise.locationinfo;
+package ch.thp.proto.unendlichereise.shared.ojp;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -8,7 +8,7 @@ import org.springframework.http.MediaType;
 import org.springframework.web.reactive.function.client.WebClient;
 
 @Configuration
-public class LocationInfoConfig {
+public class OjpWebClientConfig {
 
     @Bean
     public WebClient ojpWebClient(

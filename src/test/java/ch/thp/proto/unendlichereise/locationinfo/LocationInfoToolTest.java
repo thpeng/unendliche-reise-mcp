@@ -1,6 +1,7 @@
 package ch.thp.proto.unendlichereise.locationinfo;
 
 import ch.thp.proto.unendlichereise.locationinfo.model.LocationResult;
+import ch.thp.proto.unendlichereise.shared.sanitizer.InputSanitizer;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -19,11 +20,13 @@ class LocationInfoToolTest {
     @Mock
     private LocationInfoService locationInfoService;
 
+    private InputSanitizer inputSanitizer;
     private LocationInfoTool tool;
 
     @BeforeEach
     void setUp() {
-        tool = new LocationInfoTool(locationInfoService);
+        inputSanitizer = new InputSanitizer();
+        tool = new LocationInfoTool(locationInfoService, inputSanitizer);
     }
 
     @Test
