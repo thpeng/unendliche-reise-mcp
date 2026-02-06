@@ -1,5 +1,6 @@
 package ch.thp.proto.unendlichereise;
 
+import ch.thp.proto.unendlichereise.locationinfo.LocationInfoTool;
 import org.springframework.ai.tool.ToolCallbackProvider;
 import org.springframework.ai.tool.method.MethodToolCallbackProvider;
 import org.springframework.boot.SpringApplication;
@@ -13,6 +14,10 @@ public class UnendlicheReiseApplication {
         SpringApplication.run(UnendlicheReiseApplication.class, args);
     }
 
-
-
+    @Bean
+    public ToolCallbackProvider locationInfoTools(LocationInfoTool tool) {
+        return MethodToolCallbackProvider.builder()
+                .toolObjects(tool)
+                .build();
+    }
 }

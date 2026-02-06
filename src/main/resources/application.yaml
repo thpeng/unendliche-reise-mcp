@@ -13,6 +13,11 @@ spring:
         streamable-http:
           mcp-endpoint: /mcp
 
+ojp:
+  api:
+    base-url: https://api.opentransportdata.swiss
+    token: ${OJP_AUTH_TOKEN:}
+
 management:
   endpoints:
     web:
