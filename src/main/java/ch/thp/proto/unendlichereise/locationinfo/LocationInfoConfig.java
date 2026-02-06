@@ -10,15 +10,12 @@ import org.springframework.web.reactive.function.client.WebClient;
 @Configuration
 public class LocationInfoConfig {
 
-    @Value("${ojp.api.base-url:https://api.opentransportdata.swiss}")
-    private String baseUrl;
-
-    @Value("${ojp.api.token:${OJP_AUTH_TOKEN:}}")
-    private String apiToken;
-
     @Bean
-    public WebClient ojpWebClient(WebClient.Builder builder) {
-        return builder
+    public WebClient ojpWebClient(
+            @Value("${ojp.api.base-url:https://api.opentransportdata.swiss}") String baseUrl,
+            @Value("${ojp.api.token:${OJP_AUTH_TOKEN:}}") String apiToken
+    ) {
+        return WebClient.builder()
                 .baseUrl(baseUrl)
                 .defaultHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_XML_VALUE)
                 .defaultHeader(HttpHeaders.ACCEPT, MediaType.APPLICATION_XML_VALUE)
