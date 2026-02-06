@@ -1,0 +1,23 @@
+spring:
+  ai:
+    mcp:
+      server:
+        protocol: streamable
+        version: 1.0.0
+        type: SYNC
+        instructions: |
+
+        resource-change-notification: true
+        tool-change-notification: true
+        prompt-change-notification: true
+        streamable-http:
+          mcp-endpoint: /mcp
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include:
+          - health
+          - readiness
+          - liveness
