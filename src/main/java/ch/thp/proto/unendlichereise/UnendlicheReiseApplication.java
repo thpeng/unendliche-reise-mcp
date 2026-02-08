@@ -18,20 +18,6 @@ public class UnendlicheReiseApplication {
     }
 
     @Bean
-    public ToolCallbackProvider locationInfoTools(LocationInfoTool tool) {
-        return MethodToolCallbackProvider.builder()
-                .toolObjects(tool)
-                .build();
-    }
-
-    @Bean
-    public ToolCallbackProvider tripPlannerTools(TripPlannerTool tool) {
-        return MethodToolCallbackProvider.builder()
-                .toolObjects(tool)
-                .build();
-    }
-
-    @Bean
     SecurityWebFilterChain mcpSecurityDisabledSecurityFilterChain(ServerHttpSecurity http) {
         return http
                 .csrf(ServerHttpSecurity.CsrfSpec::disable)

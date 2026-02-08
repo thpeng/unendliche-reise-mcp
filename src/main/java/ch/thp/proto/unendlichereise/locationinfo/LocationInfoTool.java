@@ -5,6 +5,8 @@ import ch.thp.proto.unendlichereise.locationinfo.model.LocationResult;
 import ch.thp.proto.unendlichereise.shared.sanitizer.InputSanitizer;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springaicommunity.mcp.annotation.McpTool;
+import org.springaicommunity.mcp.annotation.McpToolParam;
 import org.springframework.ai.tool.annotation.Tool;
 import org.springframework.ai.tool.annotation.ToolParam;
 import org.springframework.stereotype.Service;
@@ -24,10 +26,10 @@ public class LocationInfoTool {
     private final LocationInfoService locationInfoService;
     private final InputSanitizer inputSanitizer;
 
-    @Tool(description = "Find Swiss public transport stops, addresses, or POIs by name. Returns matching locations with coordinates.")
+    @McpTool(description = "Find Swiss public transport stops, addresses, or POIs by name. Returns matching locations with coordinates.")
     public List<LocationResult> findLocation(
-            @ToolParam(description = "Location name to search") String name,
-            @ToolParam(description = "Maximum results (1-10, default 5)") Integer limit
+            @McpToolParam(description = "Location name to search") String name,
+            @McpToolParam(description = "Maximum results (1-10, default 5)") Integer limit
     ) {
         String sanitizedName = inputSanitizer.sanitize(name);
         if (sanitizedName == null || sanitizedName.isBlank()) {
