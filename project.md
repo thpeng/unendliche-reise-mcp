@@ -1,5 +1,13 @@
 # PROJECT.md
 
+## API
+- All API fragements such as xsd, wsdl or openapi.yaml reside below src/main/generated. 
+- Do not change any API files. 
+
+## Specification
+- Work with spec-driven development. First step is always to create specification in the folder src/main/specs
+- the specs are written in markdown, must contain all business and non-functional requirements
+
 ## Technology Stack
 - **Language**: Java
 - **Framework**: Spring Boot with WebFlux (reactive)
@@ -148,6 +156,8 @@ class ToolNameTest {
     // Verify MCP protocol compliance
 }
 ```
+- Always start the implementation with generating test cases, then implementation (TDD)
+- Aim for 80% coverability
 
 ## Development Guidelines
 
